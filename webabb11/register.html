@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<h2>Форма регистрации</h2>
+
+<form action="http://localhost/webabb11/register.php" method="POST">
+    <label for="login">Логин:</label>
+    <input type="text" id="login" name="login" required><br><br>
+
+    <label for="password">Пароль:</label>
+    <input type="password" id="password" name="password" required><br><br>
+
+    <label for="admin">Администратор:</label>
+    <select id="admin" name="admin" required>
+        <option value="нет">Нет</option>
+        <option value="да">Да</option>
+    </select><br><br>
+
+    <button type="submit">Зарегистрироваться</button>
+</form>
+
+</body>
+</html>

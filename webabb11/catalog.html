@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог книг</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>Каталог книг</h2>
+    
+    <!-- Форма поиска -->
+    <form method="GET" action="http://localhost/webabb11/catalog.php">
+        <input type="text" name="search" value="<?php echo $search; ?>" placeholder="Поиск книг...">
+        <button type="submit">Найти</button>
+    </form>
+
+    <div class="books-container">
+        <?php
+        if ($result->num_rows > 0) {
+            while($row = $result->fetch_assoc()) {
+                echo '<div class="book">';
+                echo '<h3>' . $row['name'] . '</h3>';
+                echo '<p>Автор: ' . $row['author'] . '</p>';
+                echo '<p>Жанр: ' . $row['genre'] . '</p>';
+                echo '<p>Год выпуска: ' . $row['publish_year'] . '</p>';
+                
+                if (!empty($row['image'])) {
+                    echo '<img src="' . $row['image'] . '" alt="Картинка">';
+                }
+                echo '</div>';
+            }
+        } else {
+            echo "Нет книг для отображения.";
+        }
+        ?>
+    </div>
+
+    <!-- Кнопка добавления книги для админа -->
+    <?php if ($isAdmin): ?>
+        <button class="add-book-btn" onclick="window.location.href='add_book.php'">+</button>
+    <?php endif; ?>
+</body>
+</html>
